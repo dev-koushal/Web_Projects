@@ -41,3 +41,5 @@ inputFields.forEach((input) => {
         progressBar.classList.remove('show-error')
     })
 })
+
+// ewe need to see each field to checkup the final green tick we need ot set it intioal= 
