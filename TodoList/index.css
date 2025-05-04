@@ -174,3 +174,9 @@ main {
     height: 24px;
   }
 }
+
+spline-viewer{
+  position: absolute;
+  top: 10%;
+  right: -30%;
+}
