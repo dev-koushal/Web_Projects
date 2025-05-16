@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Local Storage</title>
+  </head>
+  <body>
+    <input type="text" placeholder="Enter your name" />
+    <h1>
+      Your name is <p></p>
+    </h1>
+
+    <script>
+      const h1 = document.querySelector("p");
+      const input = document.querySelector("input");
+
+      // Load saved name from localStorage if exists
+      const savedName = localStorage.getItem("name");
+      if (savedName) {
+        h1.textContent = savedName;
+        input.value = savedName;
+      }
+
+      // Save input to localStorage and update <p>
+      input.addEventListener("input", (e) => {
+        const name = e.target.value;
+        localStorage.setItem("name", name);
+        h1.textContent = name;
+      });
+    </script>
+  </body>
+</html>

@@ -60,10 +60,12 @@ main {
   display: flex;
   align-items: center;
   overflow: hidden;
+  transition: width 0.2s ease-in-out;
 }
 
 .progress-value span {
   padding-left: 20px;
+  min-width: max-content;
 }
 
 .error-label {
@@ -174,11 +176,3 @@ main {
     height: 24px;
   }
 }
-
-/* spline-viewer{
-  position: absolute;
-  top: 10%;
-  right: -30%;
-} */
-
-
