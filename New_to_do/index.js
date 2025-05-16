@@ -32,36 +32,37 @@ function updateTodoList(){
 
 function createTodoItem(todo,todoIndex) {
     const todoId = "todo-"+todoIndex;
-  const todoLi = document.createElement("li");
-  const TodoText = todo.text;
-  todoLi.className = "todo";
-  todoLi.innerHTML = `
-  <input type="checkbox" id="${todoId}" />
-          <label class="custom-checkbox " for="${todoId}">
-            <img src="icons/check_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg" />
-          </label>
-          <label for="${todoId}" class="todo-text"
-            >${todo}</label
-          >
-          <button class="delete-button">
-            <img
-              src="icons/delete_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
-            />
-          </button> 
-  `
-  const deleteButton = todoLi.querySelector(".delete-button");
-  deleteButton.addEventListener("click",()=>{
-    deleteTodoItem(todoIndex);
+    const todoLi = document.createElement("li");
+    const TodoText = todo.text;
+    todoLi.className = "todo";
+    todoLi.innerHTML = `
+    <input type="checkbox" id="${todoId}" />
+            <label class="custom-checkbox " for="${todoId}">
+              <img src="icons/check_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg" />
+            </label>
+            <label for="${todoId}" class="todo-text"
+              >${todo.text}</label
+            >
+            <button class="delete-button">
+              <img
+                src="icons/delete_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
+              />
+            </button> 
+    `
+    const deleteButton = todoLi.querySelector(".delete-button");
+    deleteButton.addEventListener("click",()=>{
+      deleteTodoItem(todoIndex);
+    })
+    const checkbox = todoLi.querySelector("input");
+    checkbox.addEventListener("change",()=>
+  {
+      allTodos[todoIndex].completed = checkbox.checked;
+      saveTodos();
   })
-  const checkbox = todoLi.querySelector("input");
-  checkbox.addEventListener("change",()=>
-{
-    allTodos[todoIndex].completed = checkbox.checked;
-    saveTodos();
-})
-checkbox.checked =todo.completed;
-  return todoLi;
+  checkbox.checked =todo.completed;
+    return todoLi;
 }
+
 
 //local storage//
 function  deleteTodoItem(todoIndex){
