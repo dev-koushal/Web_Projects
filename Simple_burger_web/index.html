@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Burger Bliss - Fresh & Natural Burgers</title>
+  <style>
+    /* Reset and base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #D2D0A0; /* Light mellow yellow */
+      color: #3b3b3b;
+      line-height: 1.6;
+      min-height: 100vh;
+      scroll-behavior: smooth;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+    }
+    /* Utility container */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      background: #537D5D; /* Dark Green */
+      color: #D2D0A0;
+      padding: 1.25rem 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 101;
+      font-weight: 600;
+    }
+    header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-size: 2rem;
+      font-family: 'Georgia', serif;
+      letter-spacing: 2px;
+      cursor: default;
+      user-select: none;
+    }
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+    nav ul li {
+      margin-left: 2rem;
+    }
+    nav ul li a {
+      color: #D2D0A0;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: #9EBC8A;
+      left: 0;
+      bottom: -6px;
+      transition: width 0.3s ease;
+    }
+    nav ul li a:hover,
+    nav ul li a:focus {
+      color: #9EBC8A;
+    }
+    nav ul li a:hover::after,
+    nav ul li a:focus::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      background:
+        linear-gradient(to right, rgba(83,125,93,0.8), rgba(115,148,107,0.8)),
+        url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+      color: #D2D0A0;
+      height: 75vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      padding: 0 1rem;
+      font-family: 'Georgia', serif;
+      user-select: none;
+    }
+    .hero h1 {
+      font-size: 3.8rem;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+      margin-bottom: 1rem;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+    .hero p {
+      font-size: 1.6rem;
+      max-width: 650px;
+      margin: 0 auto;
+      text-shadow: 1.5px 1.5px 5px rgba(0,0,0,0.4);
+    }
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      .hero p {
+        font-size: 1.2rem;
+      }
+    }
+
+    /* Features Section */
+    .features-section {
+      background: #9EBC8A; /* Mid green */
+      color: #537D5D;
+      padding: 3rem 1rem;
+      font-family: 'Georgia', serif;
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+    .feature {
+      flex: 1 1 220px;
+      max-width: 280px;
+    }
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #537D5D;
+    }
+    .feature h3 {
+      font-size: 1.6rem;
+      margin-bottom: 0.6rem;
+      font-weight: 600;
+    }
+    .feature p {
+      font-size: 1.1rem;
+      font-weight: 400;
+      line-height: 1.4;
+      color: #3b3b3b;
+    }
+
+    /* Menu Section */
+    .menu-section {
+      background: #D2D0A0; /* Light mellow yellow */
+      padding: 3rem 0 5rem;
+    }
+    .menu-section h2 {
+      text-align: center;
+      font-size: 3rem;
+      margin-bottom: 2rem;
+      color: #537D5D;
+      font-family: 'Georgia', serif;
+      letter-spacing: 1.2px;
+      user-select: none;
+    }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 2.2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .menu-item {
+      background: #ffffffcc;
+      border-radius: 15px;
+      box-shadow: 0 6px 10px rgba(83,125,93,0.2);
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.28s ease, box-shadow 0.28s ease;
+      cursor: default;
+      display: flex;
+      flex-direction: column;
+      user-select: none;
+    }
+    .menu-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 25px rgba(83,125,93,0.35);
+    }
+    .menu-item img {
+      height: 210px;
+      object-fit: cover;
+      border-bottom: 4px solid #73946B;
+      transition: transform 0.3s ease;
+    }
+    .menu-item:hover img {
+      transform: scale(1.05);
+    }
+    .menu-content {
+      padding: 1.4rem 1.8rem 2.4rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .menu-content h3 {
+      color: #537D5D;
+      font-family: 'Georgia', serif;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+      font-size: 1.5rem;
+      position: relative;
+      user-select: text;
+    }
+    .badge-special {
+      background: #73946B;
+      color: #D2D0A0;
+      font-weight: 700;
+      font-size: 0.75rem;
+      padding: 0.15rem 0.6rem;
+      border-radius: 20px;
+      position: absolute;
+      top: -8px;
+      right: -10px;
+      user-select: none;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      box-shadow: 0 0 6px rgba(115,148,107,0.6);
+    }
+    .menu-content p {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      color: #4a5b44;
+      flex-grow: 1;
+      user-select: text;
+    }
+    .price {
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: #73946B;
+      user-select: text;
+    }
+
+    /* Testimonials Section */
+    .testimonials-section {
+      background: #73946B; /* Soft green */
+      color: #D2D0A0;
+      padding: 4rem 1rem 5rem;
+      font-family: 'Georgia', serif;
+      text-align: center;
+    }
+    .testimonials-section h2 {
+      font-size: 2.8rem;
+      margin-bottom: 2.2rem;
+      user-select: none;
+    }
+    .testimonials-grid {
+      max-width: 980px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 2rem;
+    }
+    .testimonial {
+      background: #9EBC8A;
+      border-radius: 15px;
+      padding: 1.8rem 2.2rem;
+      box-shadow: 0 6px 12px rgba(83,125,93,0.26);
+      user-select: text;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .testimonial p {
+      font-style: italic;
+      font-size: 1.15rem;
+      margin-bottom: 1.2rem;
+      line-height: 1.5;
+      color: #3b3b3b;
+    }
+    .testimonial .author {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #537D5D;
+      text-align: right;
+      user-select: none;
+    }
+
+    /* About Section */
+    .about-section {
+      background: #D2D0A0;
+      padding: 4rem 1rem 5rem;
+      text-align: center;
+      font-family: 'Georgia', serif;
+      color: #537D5D;
+      user-select: text;
+      max-width: 850px;
+      margin: 0 auto 5rem;
+      line-height: 1.7;
+      font-size: 1.25rem;
+      letter-spacing: 0.02em;
+    }
+    .about-section h2 {
+      font-size: 3rem;
+      margin-bottom: 1.2rem;
+      letter-spacing: 1.2px;
+      user-select: none;
+    }
+    .about-section p {
+      color: #4a5b44;
+      font-weight: 400;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      background: #fff;
+      padding: 3rem 1rem 6rem;
+      color: #537D5D;
+    }
+    .contact-section h2 {
+      font-family: 'Georgia', serif;
+      font-size: 3rem;
+      color: #537D5D;
+      margin-bottom: 2rem;
+      text-align: center;
+      user-select: none;
+    }
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: left;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-weight: 700;
+      color: #73946B;
+      user-select: none;
+    }
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 0.85rem 1.2rem;
+      border: 2px solid #9EBC8A;
+      border-radius: 10px;
+      font-size: 1rem;
+      margin-bottom: 1.8rem;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      transition: border-color 0.3s ease;
+      color: #537D5D;
+      resize: vertical;
+      user-select: text;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #537D5D;
+      box-shadow: 0 0 8px #537D5D80;
+    }
+    textarea {
+      min-height: 140px;
+    }
+    button {
+      background: #537D5D;
+      color: #D2D0A0;
+      border: none;
+      padding: 1rem 2.5rem;
+      font-size: 1.2rem;
+      font-weight: 700;
+      border-radius: 12px;
+      cursor: pointer;
+      display: block;
+      margin: 0 auto;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      user-select: none;
+    }
+    button:hover,
+    button:focus {
+      background: #73946B;
+      transform: scale(1.05);
+      outline: none;
+    }
+
+    /* Footer */
+    footer {
+      background: #537D5D;
+      color: #D2D0A0;
+      padding: 1.5rem 0;
+      text-align: center;
+      font-size: 0.9rem;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      user-select: none;
+    }
+    .social-links {
+      margin-top: 0.7rem;
+    }
+    .social-links a {
+      color: #9EBC8A;
+      margin: 0 0.8rem;
+      font-size: 1.4rem;
+      transition: color 0.3s ease;
+      user-select: none;
+    }
+    .social-links a:hover,
+    .social-links a:focus {
+      color: #D2D0A0;
+      outline: none;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+      nav ul li {
+        margin: 1rem 0;
+      }
+      .features-section {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+  <script src="index.js" defer></script>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <div class="logo" aria-label="Burger Bliss brand">Burger Bliss</div>
+      <nav aria-label="Primary Navigation">
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="hero" role="banner">
+    <div class="container">
+      <h1>Experience The Ultimate Burger Delight</h1>
+      <p>Freshly grilled, perfectly crafted, and irresistibly natural. Taste the joy in every bite.</p>
+    </div>
+  </section>
+
+  <section class="features-section" id="features" aria-label="Website Features">
+    <div class="feature">
+      <div class="feature-icon" aria-hidden="true">🌿</div>
+      <h3>Fresh Ingredients</h3>
+      <p>Only the freshest, locally sourced produce to create mouthwatering burgers.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon" aria-hidden="true">🔥</div>
+      <h3>Grilled to Perfection</h3>
+      <p>Expertly grilled patties bringing out authentic smoky flavors every time.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon" aria-hidden="true">🏆</div>
+      <h3>Award-winning Taste</h3>
+      <p>Recognized by burger lovers worldwide for our exceptional quality and flavor.</p>
+    </div>
+  </section>
+
+  <section class="menu-section" id="menu" aria-label="Our Signature Burgers">
+    <h2>Our Signature Burgers</h2>
+    <div class="menu-grid">
+
+      <article class="menu-item" tabindex="0" aria-label="Classic Cheeseburger burger">
+        <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=60" alt="Classic Cheeseburger" />
+        <div class="menu-content">
+          <h3>Classic Cheeseburger <span class="badge-special" aria-label="Chef's special">Chef's Special</span></h3>
+          <p>Grilled beef patty topped with cheddar cheese, fresh lettuce, tomato, onions, and our special sauce.</p>
+          <div class="price" aria-label="Price 8 dollars 99 cents">$8.99</div>
+        </div>
+      </article>
+
+      <article class="menu-item" tabindex="0" aria-label="Bacon BBQ Burger burger">
+        <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=60" alt="Bacon BBQ Burger" />
+        <div class="menu-content">
+          <h3>Bacon BBQ Burger</h3>
+          <p>Juicy beef patty smothered in BBQ sauce, crispy bacon, cheddar, and tangy pickles.</p>
+          <div class="price" aria-label="Price 10 dollars 49 cents">$10.49</div>
+        </div>
+      </article>
+
+      <article class="menu-item" tabindex="0" aria-label="Mushroom Swiss Burger burger">
+        <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=60" alt="Mushroom Swiss Burger" />
+        <div class="menu-content">
+          <h3>Mushroom Swiss Burger</h3>
+          <p>Beef patty topped with sautéed mushrooms and melted Swiss cheese, served with fresh greens.</p>
+          <div class="price" aria-label="Price 9 dollars 99 cents">$9.99</div>
+        </div>
+      </article>
+
+      <article class="menu-item" tabindex="0" aria-label="Spicy Jalapeño Burger burger">
+        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=60" alt="Spicy Jalapeño Burger" />
+        <div class="menu-content">
+          <h3>Spicy Jalapeño Burger</h3>
+          <p>Kick it up a notch with pepper jack cheese, jalapeños, spicy mayo, and crispy onions.</p>
+          <div class="price" aria-label="Price 10 dollars 99 cents">$10.99</div>
+        </div>
+      </article>
+
+      <article class="menu-item" tabindex="0" aria-label="Veggie Delight burger">
+        <img src="https://images.unsplash.com/photo-1550418290-e8d2e6f4ecb4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=60" alt="Veggie Delight Burger" />
+        <div class="menu-content">
+          <h3>Veggie Delight</h3>
+          <p>A flavorful grilled veggie patty with avocado, lettuce, tomato, and a zesty sauce.</p>
+          <div class="price" aria-label="Price 9 dollars 49 cents">$9.49</div>
+        </div>
+      </article>
+
+      <article class="menu-item" tabindex="0" aria-label="Double Deluxe Burger burger">
+        <img src="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=60" alt="Double Deluxe Burger" />
+        <div class="menu-content">
+          <h3>Double Deluxe Burger</h3>
+          <p>Two juicy beef patties stacked with cheese, lettuce, tomato, pickles, and special sauce.</p>
+          <div class="price" aria-label="Price 12 dollars 99 cents">$12.99</div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="testimonials-section" id="testimonials" aria-label="Customer Testimonials">
+    <h2>What Our Customers Say</h2>
+    <div class="testimonials-grid">
+
+      <blockquote class="testimonial" tabindex="0">
+        <p>"Burger Bliss has the best burger I've ever had! The flavors are perfectly balanced and everything tastes freshly made."</p>
+        <cite class="author">— Emily R.</cite>
+      </blockquote>
+
+      <blockquote class="testimonial" tabindex="0">
+        <p>"The variety of burgers and fresh ingredients keep me coming back. Highly recommend the Mushroom Swiss — amazing!"</p>
+        <cite class="author">— Jason M.</cite>
+      </blockquote>
+
+      <blockquote class="testimonial" tabindex="0">
+        <p>"Great atmosphere and even better food. The staff is friendly, and the burgers are always cooked to perfection."</p>
+        <cite class="author">— Sophia K.</cite>
+      </blockquote>
+
+    </div>
+  </section>
+
+  <section class="about-section" id="about" aria-label="About Burger Bliss">
+    <h2>About Burger Bliss</h2>
+    <p>
+      At Burger Bliss, we are passionate about crafting the highest quality burgers with a fresh, natural touch. Using locally sourced ingredients and time-tested recipes, we bring you flavors that satisfy every craving with a hint of wholesome goodness. Whether you're a meat lover or looking for delicious veggie options, our creations promise to delight your taste buds and warm your heart.
+    </p>
+  </section>
+
+  <section class="contact-section" id="contact" aria-label="Contact Us">
+    <h2>Contact Us</h2>
+    <form id="contactForm" novalidate>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Your full name" required autocomplete="name" />
+      
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email" />
+      
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+      
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <div class="container" aria-label="Site footer">
+      &copy; 2024 Burger Bliss. All Rights Reserved.
+      <div class="social-links" aria-label="Social Media links" role="list">
+        <a href="#" title="Facebook" aria-label="Facebook" role="listitem" tabindex="0" >&#x1F426;</a> 
+        <a href="#" title="Twitter" aria-label="Twitter" role="listitem" tabindex="0" >&#x1F426;</a> 
+        <a href="#" title="Instagram" aria-label="Instagram" role="listitem" tabindex="0" >&#x1F426;</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
