@@ -12,8 +12,8 @@
       box-sizing: border-box;
     }
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #D2D0A0; /* Light mellow yellow */
+      font-family:monospace;
+       background: #343f36; /* Light mellow yellow */
       color: #3b3b3b;
       line-height: 1.6;
       min-height: 100vh;
@@ -36,7 +36,7 @@
 
     /* Header */
     header {
-      background: #537D5D; /* Dark Green */
+      background: #343f36; /* Dark Green */
       color: #D2D0A0;
       padding: 1.25rem 0;
       box-shadow: 0 2px 5px rgba(0,0,0,0.15);
@@ -52,10 +52,11 @@
     }
     .logo {
       font-size: 2rem;
-      font-family: 'Georgia', serif;
+      font-family:monospace;
       letter-spacing: 2px;
       cursor: default;
       user-select: none;
+      text-transform: uppercase;
     }
     nav ul {
       display: flex;
@@ -92,24 +93,23 @@
 
     /* Hero Section */
     .hero {
-      background:
-        linear-gradient(to right, rgba(83,125,93,0.8), rgba(115,148,107,0.8)),
-        url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
-      color: #D2D0A0;
-      height: 75vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      text-align: center;
-      padding: 0 1rem;
-      font-family: 'Georgia', serif;
-      user-select: none;
-    }
+    background: linear-gradient(to right, rgb(0 0 0 / 80%), rgb(0 0 0 / 80%)), url(https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80) no-repeat center center / cover;
+    color: #d4d4d4;
+    height: 75vh;
+    display: flex
+;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 0 1rem;
+    font-family: 'Georgia', serif;
+    user-select: none;
+}
     .hero h1 {
       font-size: 3.8rem;
       text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
       margin-bottom: 1rem;
-      font-weight: 700;
+      font-weight: 500;
       line-height: 1.1;
     }
     .hero p {
@@ -129,8 +129,8 @@
 
     /* Features Section */
     .features-section {
-      background: #9EBC8A; /* Mid green */
-      color: #537D5D;
+      background: #343f36; /* Dark Green */
+      color: #D2D0A0;
       padding: 3rem 1rem;
       font-family: 'Georgia', serif;
       display: flex;
@@ -157,19 +157,19 @@
       font-size: 1.1rem;
       font-weight: 400;
       line-height: 1.4;
-      color: #3b3b3b;
+      color: #ffff;
     }
 
     /* Menu Section */
     .menu-section {
-      background: #D2D0A0; /* Light mellow yellow */
+      background: #343f36; /* Light mellow yellow */
       padding: 3rem 0 5rem;
     }
     .menu-section h2 {
       text-align: center;
       font-size: 3rem;
       margin-bottom: 2rem;
-      color: #537D5D;
+      color: #D2D0A0;
       font-family: 'Georgia', serif;
       letter-spacing: 1.2px;
       user-select: none;
@@ -252,11 +252,12 @@
 
     /* Testimonials Section */
     .testimonials-section {
-      background: #73946B; /* Soft green */
+      background: #121312; /* Soft green */
       color: #D2D0A0;
       padding: 4rem 1rem 5rem;
       font-family: 'Georgia', serif;
       text-align: center;
+      border-radius: 20px;
     }
     .testimonials-section h2 {
       font-size: 2.8rem;
@@ -297,11 +298,11 @@
 
     /* About Section */
     .about-section {
-      background: #D2D0A0;
+      background: #343f36;
       padding: 4rem 1rem 5rem;
       text-align: center;
       font-family: 'Georgia', serif;
-      color: #537D5D;
+      color: #b6b6b6;
       user-select: text;
       max-width: 850px;
       margin: 0 auto 5rem;
@@ -316,15 +317,16 @@
       user-select: none;
     }
     .about-section p {
-      color: #4a5b44;
+      color: #bdc2bb;
       font-weight: 400;
     }
 
     /* Contact Section */
     .contact-section {
-      background: #fff;
+      background: #1f1f1f;
       padding: 3rem 1rem 6rem;
       color: #537D5D;
+      border-radius: 20px 20px 0 0;
     }
     .contact-section h2 {
       font-family: 'Georgia', serif;
@@ -347,7 +349,7 @@
       color: #73946B;
       user-select: none;
     }
-    input[type="text"],
+    input[type="text"] ,
     input[type="email"],
     textarea {
       width: 100%;
@@ -364,6 +366,9 @@
     }
     input[type="text"]:focus,
     input[type="email"]:focus,
+    input{
+      background-color: #c5c5c5;
+    }
     textarea:focus {
       outline: none;
       border-color: #537D5D;
@@ -371,6 +376,7 @@
     }
     textarea {
       min-height: 140px;
+      background-color: #c5c5c5;
     }
     button {
       background: #537D5D;
@@ -397,11 +403,13 @@
     footer {
       background: #537D5D;
       color: #D2D0A0;
-      padding: 1.5rem 0;
+      padding: 1rem 0;
       text-align: center;
       font-size: 0.9rem;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       user-select: none;
+      border-radius: 0 0 20px 20px;
+
     }
     .social-links {
       margin-top: 0.7rem;
@@ -421,9 +429,16 @@
 
     /* Responsive adjustments */
     @media (max-width: 600px) {
+      .wrapper{
+        padding: 10px;
+      }
+      .hero{
+        
+      }
       nav ul {
         flex-direction: column;
         align-items: center;
+        display: none;
       }
       nav ul li {
         margin: 1rem 0;
@@ -431,6 +446,9 @@
       .features-section {
         flex-direction: column;
         text-align: center;
+      }
+      .features-section{
+        padding: 3rem 4rem;
       }
     }
   </style>
@@ -461,7 +479,8 @@
     </div>
   </section>
 
-  <section class="features-section" id="features" aria-label="Website Features">
+  <div class="wrapper">
+    <section class="features-section" id="features" aria-label="Website Features">
     <div class="feature">
       <div class="feature-icon" aria-hidden="true">🌿</div>
       <h3>Fresh Ingredients</h3>
@@ -520,7 +539,7 @@
       </article>
 
       <article class="menu-item" tabindex="0" aria-label="Veggie Delight burger">
-        <img src="https://images.unsplash.com/photo-1550418290-e8d2e6f4ecb4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=60" alt="Veggie Delight Burger" />
+        <img src="https://static.vecteezy.com/system/resources/previews/023/558/535/non_2x/close-up-of-a-juicy-burger-with-fries-it-look-very-delicious-big-sandwich-hamburger-with-juicy-beef-burger-cheese-tomato-and-red-onion-photo.jpg" />
         <div class="menu-content">
           <h3>Veggie Delight</h3>
           <p>A flavorful grilled veggie patty with avocado, lettuce, tomato, and a zesty sauce.</p>
@@ -529,7 +548,7 @@
       </article>
 
       <article class="menu-item" tabindex="0" aria-label="Double Deluxe Burger burger">
-        <img src="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=60" alt="Double Deluxe Burger" />
+        <img style="object-position: 0 -90px;" src="https://img.freepik.com/free-photo/view-delicious-burger-with-buns-cheese_23-2150887822.jpg?semt=ais_hybrid&w=740" />
         <div class="menu-content">
           <h3>Double Deluxe Burger</h3>
           <p>Two juicy beef patties stacked with cheese, lettuce, tomato, pickles, and special sauce.</p>
@@ -595,6 +614,7 @@
       </div>
     </div>
   </footer>
+  </div>
 
 </body>
 </html>
